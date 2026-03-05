@@ -33,14 +33,16 @@
 
 #CodeInput .unity-base-text-field__input {
     color: rgb(49, 248, 251);
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 15px;
 }
 
 #CodeInput .unity-base-text-field__input--placeholder {
     color: rgb(157, 157, 246);
     opacity: 1;
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 15px;
 }
-
-
 
 #MainMenuBody > .unity-group-box > #MinimapToggle > .unity-toggle__input {
     -unity-background-image-tint-color: rgb(157, 157, 246);
@@ -54,4 +56,52 @@
     background-color: rgba(255, 255, 255, 0);
     -unity-background-image-tint-color: rgb(49, 248, 251);
     -unity-slice-scale: 0;
+}
+
+#VisualElement > #MainMenuBody > #TogglesContainer > #ModeToggle > .unity-toggle__label {
+    min-width: 0;
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 15px;
+}
+
+#VisualElement > #MainMenuBody > #TogglesContainer > #MinimapToggle > .unity-toggle__label {
+    width: 0;
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 15px;
+}
+
+#ErrorModalOverlay
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0,0,0,0.5);
+
+    justify-content: center;
+    align-items: center;
+
+    display: none;
+}
+
+#ErrorModal
+{
+    width: 70%;
+    max-width: 400px;
+
+    background-color: #1e1e1e;
+    padding: 20px;
+
+    border-radius: 10px;
+
+    align-items: center;
+}
+
+#ErrorText
+{
+    color: white;
+    unity-text-align: middle-center;
+    margin-bottom: 15px;
 }
