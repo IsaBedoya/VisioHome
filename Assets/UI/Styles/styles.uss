@@ -1,0 +1,57 @@
+:root {
+}
+
+#MainMenuBody > .unity-group-box > #CodeInput > #unity-text-input {
+    background-color: rgba(157, 157, 246, 0);
+    background-image: url("project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&guid=ccc7c244fcf7a7944a1dcb662b24f7a8&type=3#9sprite_8bit_circle_outline");
+    -unity-slice-type: tiled;
+    -unity-slice-scale: 0.05px;
+    -unity-background-image-tint-color: rgb(157, 157, 246);
+}
+
+#MainMenuBody > .unity-group-box > #ModeToggle > .unity-toggle__input {
+    -unity-background-image-tint-color: rgb(157, 157, 246);
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&guid=ccc7c244fcf7a7944a1dcb662b24f7a8&type=3#9sprite_8bit_circle_outline");
+    -unity-slice-type: tiled;
+    -unity-slice-scale: 0.05px;
+}
+
+#MainMenuBody > .unity-group-box > #ModeToggle > .unity-toggle__input > #unity-checkmark {
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(49, 248, 251);
+    -unity-slice-scale: 0;
+}
+
+#MainMenuBody > .unity-group-box > #CodeInput > #unity-text-input {
+    background-color: rgba(157, 157, 246, 0);
+    background-image: url("project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&guid=ccc7c244fcf7a7944a1dcb662b24f7a8&type=3#9sprite_8bit_circle_outline");
+    -unity-slice-type: tiled;
+    -unity-slice-scale: 0.05px;
+    -unity-background-image-tint-color: rgb(157, 157, 246);
+}
+
+#CodeInput .unity-base-text-field__input {
+    color: rgb(49, 248, 251);
+}
+
+#CodeInput .unity-base-text-field__input--placeholder {
+    color: rgb(157, 157, 246);
+    opacity: 1;
+}
+
+
+
+#MainMenuBody > .unity-group-box > #MinimapToggle > .unity-toggle__input {
+    -unity-background-image-tint-color: rgb(157, 157, 246);
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&guid=ccc7c244fcf7a7944a1dcb662b24f7a8&type=3#9sprite_8bit_circle_outline");
+    -unity-slice-type: tiled;
+    -unity-slice-scale: 0.05px;
+}
+
+#MainMenuBody > .unity-group-box > #MinimapToggle > .unity-toggle__input > #unity-checkmark {
+    background-color: rgba(255, 255, 255, 0);
+    -unity-background-image-tint-color: rgb(49, 248, 251);
+    -unity-slice-scale: 0;
+}
