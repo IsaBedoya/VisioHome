@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class ApartmentInitializer : MonoBehaviour
 {
-    public GameObject furnishedObjects;
+    [SerializeField] private GameObject basicDeliveryObjects;
 
-    void Start()
+    private void Start()
     {
-        furnishedObjects.SetActive(MainMenuController.isFurnished);
+        if (basicDeliveryObjects == null)
+        {
+            Debug.LogWarning("Basic delivery objects are not assigned.");
+            return;
+        }
+
+        basicDeliveryObjects.SetActive(MainMenuController.isBasicDelivery);
     }
 }

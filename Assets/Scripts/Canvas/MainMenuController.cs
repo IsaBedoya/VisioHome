@@ -6,70 +6,137 @@ using System.Collections;
 public class MainMenuController : MonoBehaviour
 {
     public UIDocument uiDocument;
+    public XRLoaderController xrLoader;
 
     private TextField codeInput;
-    private Toggle furnishedToggle;
-    private Toggle minimapToggle;
+
+    private Toggle blackWorkToggle;
+    private Toggle basicDeliveryToggle;
 
     private Button enterBtn;
     private Button exitBtn;
     private Button helpBtn;
 
-    public XRLoaderController xrLoader;
-
-    public static bool isFurnished;
-    public static bool useMinimap;
+    public static bool isBlackWork;
+    public static bool isBasicDelivery;
     public static string apartmentCode;
 
     private VisualElement errorModal;
     private Label errorText;
     private Button errorCloseBtn;
 
-    void Start()
+    private bool isUpdatingToggles;
+
+    private void Start()
     {
         var root = uiDocument.rootVisualElement;
 
         if (xrLoader == null)
         {
-            Debug.LogError("XRLoader no asignado");
+            Debug.LogError("XRLoaderController is not assigned.");
             return;
         }
 
         codeInput = root.Q<TextField>("CodeInput");
 
-        furnishedToggle = root.Q<Toggle>("ModeToggle");
-        furnishedToggle.value = true;
-
-        minimapToggle = root.Q<Toggle>("MinimapToggle");
+        blackWorkToggle = root.Q<Toggle>("BlackWorkToggle");
+        basicDeliveryToggle = root.Q<Toggle>("BasicDeliveryToggle");
 
         enterBtn = root.Q<Button>("EnterBtn");
         exitBtn = root.Q<Button>("ExitBtn");
         helpBtn = root.Q<Button>("HelpBtn");
 
-        enterBtn.clicked += OnEnterPressed;
-        exitBtn.clicked += OnExitPressed;
-        helpBtn.clicked += OnHelpPressed;
-
         errorModal = root.Q<VisualElement>("ErrorModalOverlay");
         errorText = root.Q<Label>("ErrorText");
         errorCloseBtn = root.Q<Button>("ErrorCloseBtn");
 
+        if (codeInput == null ||
+            blackWorkToggle == null ||
+            basicDeliveryToggle == null ||
+            enterBtn == null ||
+            exitBtn == null ||
+            helpBtn == null ||
+            errorModal == null ||
+            errorText == null ||
+            errorCloseBtn == null)
+        {
+            Debug.LogError("One or more UI elements were not found. Check the UXML names.");
+            return;
+        }
+
+        SetDeliveryMode(true);
+
+        blackWorkToggle.RegisterValueChangedCallback(OnBlackWorkToggleChanged);
+        basicDeliveryToggle.RegisterValueChangedCallback(OnBasicDeliveryToggleChanged);
+
+        enterBtn.clicked += OnEnterPressed;
+        exitBtn.clicked += OnExitPressed;
+        helpBtn.clicked += OnHelpPressed;
         errorCloseBtn.clicked += HideError;
 
-        errorModal.RegisterCallback<ClickEvent>(evt =>
+        errorModal.RegisterCallback<ClickEvent>(_ =>
         {
             HideError();
         });
-        
-        var modalBox = root.Q<VisualElement>("ErrorModal");
 
-        modalBox.RegisterCallback<ClickEvent>(evt =>
+        var modalBox = root.Q<VisualElement>("ErrorModal");
+        if (modalBox != null)
         {
-            evt.StopPropagation();
-        });
+            modalBox.RegisterCallback<ClickEvent>(evt =>
+            {
+                evt.StopPropagation();
+            });
+        }
     }
 
-    void OnEnterPressed()
+    private void OnBlackWorkToggleChanged(ChangeEvent<bool> evt)
+    {
+        if (isUpdatingToggles)
+        {
+            return;
+        }
+
+        if (evt.newValue)
+        {
+            SetDeliveryMode(true);
+        }
+        else if (!basicDeliveryToggle.value)
+        {
+            SetDeliveryMode(true);
+        }
+    }
+
+    private void OnBasicDeliveryToggleChanged(ChangeEvent<bool> evt)
+    {
+        if (isUpdatingToggles)
+        {
+            return;
+        }
+
+        if (evt.newValue)
+        {
+            SetDeliveryMode(false);
+        }
+        else if (!blackWorkToggle.value)
+        {
+            SetDeliveryMode(false);
+        }
+    }
+
+    private void SetDeliveryMode(bool blackWorkSelected)
+    {
+        isUpdatingToggles = true;
+
+        blackWorkToggle.SetValueWithoutNotify(blackWorkSelected);
+        basicDeliveryToggle.SetValueWithoutNotify(!blackWorkSelected);
+
+        isBlackWork = blackWorkSelected;
+        isBasicDelivery = !blackWorkSelected;
+
+        isUpdatingToggles = false;
+    }
+
+    private void OnEnterPressed()
     {
         apartmentCode = codeInput.value.Trim().ToUpper();
 
@@ -79,8 +146,8 @@ public class MainMenuController : MonoBehaviour
             return;
         }
 
-        isFurnished = furnishedToggle.value;
-        useMinimap = minimapToggle.value;
+        isBlackWork = blackWorkToggle.value;
+        isBasicDelivery = basicDeliveryToggle.value;
 
         if (!SceneExists(apartmentCode))
         {
@@ -88,19 +155,17 @@ public class MainMenuController : MonoBehaviour
             return;
         }
 
-        StartCoroutine(StartVRAndLoad());
+        StartCoroutine(StartXRAndLoadScene());
     }
 
-    IEnumerator StartVRAndLoad()
+    private IEnumerator StartXRAndLoadScene()
     {
         yield return StartCoroutine(xrLoader.StartXR());
-
         yield return new WaitForSeconds(1f);
-
         SceneManager.LoadScene(apartmentCode);
     }
 
-    bool SceneExists(string sceneName)
+    private bool SceneExists(string sceneName)
     {
         int sceneCount = SceneManager.sceneCountInBuildSettings;
 
@@ -110,29 +175,31 @@ public class MainMenuController : MonoBehaviour
             string name = System.IO.Path.GetFileNameWithoutExtension(path);
 
             if (name == sceneName)
+            {
                 return true;
+            }
         }
 
         return false;
     }
 
-    void OnExitPressed()
+    private void OnExitPressed()
     {
         Application.Quit();
     }
 
-    void OnHelpPressed()
+    private void OnHelpPressed()
     {
-        Debug.Log("Mostrar ayuda (aún no implementado)");
+        Debug.Log("Help modal is not implemented yet.");
     }
 
-    void ShowError(string message)
+    private void ShowError(string message)
     {
         errorText.text = message;
         errorModal.style.display = DisplayStyle.Flex;
     }
 
-    void HideError()
+    private void HideError()
     {
         errorModal.style.display = DisplayStyle.None;
     }

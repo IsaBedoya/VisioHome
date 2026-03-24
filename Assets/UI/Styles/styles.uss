@@ -9,7 +9,7 @@
     -unity-background-image-tint-color: rgb(157, 157, 246);
 }
 
-#MainMenuBody > .unity-group-box > #ModeToggle > .unity-toggle__input {
+#MainMenuBody > .unity-group-box > #BlackWorkToggle > .unity-toggle__input {
     -unity-background-image-tint-color: rgb(157, 157, 246);
     background-color: rgba(0, 0, 0, 0);
     background-image: url("project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&guid=ccc7c244fcf7a7944a1dcb662b24f7a8&type=3#9sprite_8bit_circle_outline");
@@ -17,7 +17,7 @@
     -unity-slice-scale: 0.05px;
 }
 
-#MainMenuBody > .unity-group-box > #ModeToggle > .unity-toggle__input > #unity-checkmark {
+#MainMenuBody > .unity-group-box > #BlackWorkToggle > .unity-toggle__input > #unity-checkmark {
     background-color: rgba(255, 255, 255, 0);
     -unity-background-image-tint-color: rgb(49, 248, 251);
     -unity-slice-scale: 0;
@@ -34,17 +34,19 @@
 #CodeInput .unity-base-text-field__input {
     color: rgb(49, 248, 251);
     -unity-text-generator: advanced;
-    -unity-text-auto-size: best-fit 10px 15px;
+    -unity-text-auto-size: best-fit 10px 10px;
+    font-size: 10px;
 }
 
 #CodeInput .unity-base-text-field__input--placeholder {
     color: rgb(157, 157, 246);
     opacity: 1;
     -unity-text-generator: advanced;
-    -unity-text-auto-size: best-fit 10px 15px;
+    -unity-text-auto-size: best-fit 10px 10px;
+    font-size: 10px;
 }
 
-#MainMenuBody > .unity-group-box > #MinimapToggle > .unity-toggle__input {
+#MainMenuBody > .unity-group-box > #BasicDeliveryToggle > .unity-toggle__input {
     -unity-background-image-tint-color: rgb(157, 157, 246);
     background-color: rgba(0, 0, 0, 0);
     background-image: url("project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&guid=ccc7c244fcf7a7944a1dcb662b24f7a8&type=3#9sprite_8bit_circle_outline");
@@ -52,56 +54,69 @@
     -unity-slice-scale: 0.05px;
 }
 
-#MainMenuBody > .unity-group-box > #MinimapToggle > .unity-toggle__input > #unity-checkmark {
+#MainMenuBody > .unity-group-box > #BasicDeliveryToggle > .unity-toggle__input > #unity-checkmark {
     background-color: rgba(255, 255, 255, 0);
     -unity-background-image-tint-color: rgb(49, 248, 251);
     -unity-slice-scale: 0;
 }
 
-#VisualElement > #MainMenuBody > #TogglesContainer > #ModeToggle > .unity-toggle__label {
+#VisualElement > #MainMenuBody > #TogglesContainer > #BlackWorkToggle > .unity-toggle__label {
     min-width: 0;
     -unity-text-generator: advanced;
-    -unity-text-auto-size: best-fit 10px 15px;
+    -unity-text-auto-size: best-fit 10px 10px;
+    font-size: 10px;
 }
 
-#VisualElement > #MainMenuBody > #TogglesContainer > #MinimapToggle > .unity-toggle__label {
+#VisualElement > #MainMenuBody > #TogglesContainer > #BasicDeliveryToggle > .unity-toggle__label {
     width: 0;
     -unity-text-generator: advanced;
-    -unity-text-auto-size: best-fit 10px 15px;
+    -unity-text-auto-size: best-fit 10px 10px;
+    font-size: 10px;
 }
 
-#ErrorModalOverlay
-{
+#ErrorModalOverlay {
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-
-    background-color: rgba(0,0,0,0.5);
-
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-
     display: none;
 }
 
-#ErrorModal
-{
+#ErrorModal {
     width: 70%;
     max-width: 400px;
-
-    background-color: #1e1e1e;
+    background-color: rgb(30, 30, 30);
     padding: 20px;
-
     border-radius: 10px;
-
     align-items: center;
 }
 
-#ErrorText
-{
+#ErrorText {
     color: white;
     unity-text-align: middle-center;
     margin-bottom: 15px;
+}
+
+#BlackWorkToggle:focus .unity-toggle__label,
+#BlackWorkToggle:checked:focus .unity-toggle__label,
+#BasicDeliveryToggle:focus .unity-toggle__label,
+#BasicDeliveryToggle:checked:focus .unity-toggle__label {
+    color: rgb(49, 248, 251);
+}
+
+#BlackWorkToggle:focus .unity-toggle__input,
+#BlackWorkToggle:checked:focus .unity-toggle__input,
+#BasicDeliveryToggle:focus .unity-toggle__input,
+#BasicDeliveryToggle:checked:focus .unity-toggle__input {
+    -unity-background-image-tint-color: rgb(157, 157, 246);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#BlackWorkToggle:focus,
+#BasicDeliveryToggle:focus {
+    background-color: rgba(0, 0, 0, 0);
 }
