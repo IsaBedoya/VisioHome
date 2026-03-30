@@ -30,9 +30,16 @@ public class TeleportPoint : MonoBehaviour
     private void ExecuteTeleportation()
     {
         GameObject player = TeleportManager.Instance.Player;
-        player.transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
-        Camera camera = player.GetComponentInChildren<Camera>();
-        float rotY = transform.eulerAngles.y - camera.transform.localEulerAngles.y;
-        player.transform.rotation = Quaternion.Euler(0, rotY, 0);
+
+        Vector3 currentPlayerPosition = player.transform.position;
+        Vector3 currentPlayerRotation = player.transform.eulerAngles;
+
+        player.transform.position = new Vector3(
+            transform.position.x,
+            currentPlayerPosition.y,
+            transform.position.z
+        );
+
+        player.transform.rotation = Quaternion.Euler(currentPlayerRotation);
     }
 }
