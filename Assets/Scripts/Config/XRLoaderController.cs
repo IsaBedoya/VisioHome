@@ -16,8 +16,11 @@ public class XRLoaderController : MonoBehaviour
 
     public IEnumerator StopXR()
     {
-        XRGeneralSettings.Instance.Manager.StopSubsystems();
-        XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+        if (XRGeneralSettings.Instance.Manager.isInitializationComplete)
+        {
+            XRGeneralSettings.Instance.Manager.StopSubsystems();
+            XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+        }
 
         yield return null;
     }

@@ -229,6 +229,6 @@ public class MainMenuController : MonoBehaviour
 
     private void OpenTutorialVideo()
     {
-        Application.OpenURL("https://youtu.be/B01e0sbF6Sk");
+        Application.OpenURL("https://youtu.be/y-W1ez6fPCI?si=_k4mdL7qXIiqmRrr");
     }
 }

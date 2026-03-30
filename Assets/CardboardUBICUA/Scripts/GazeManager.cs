@@ -24,7 +24,7 @@ public class GazeManager : MonoBehaviour
     [SerializeField] private GameObject gazeBarCanvas;
     [SerializeField] Image fillIndicator;
     [Tooltip("Time in seg")]
-    [SerializeField] private float timeForSelection =2.5f;
+    [SerializeField] private float timeForSelection = 2.5f;
 
     private float timeCounter;
     private float timeProggres;
@@ -44,7 +44,7 @@ public class GazeManager : MonoBehaviour
             AddValue(timeProggres);
         }
     }
-    public void SetUpGaze(float timeForSelection) 
+    public void SetUpGaze(float timeForSelection)
     {
         this.timeForSelection = timeForSelection;
     }
@@ -63,9 +63,10 @@ public class GazeManager : MonoBehaviour
         timeCounter = 0;
     }
 
-    private void AddValue(float val) 
+    private void AddValue(float val)
     {
         timeCounter = val;
+
         if (timeCounter >= timeForSelection)
         {
             timeCounter = 0;
@@ -75,7 +76,7 @@ public class GazeManager : MonoBehaviour
 
         fillIndicator.fillAmount = Normalise();
     }
-    private float Normalise() 
+    private float Normalise()
     {
         return (float)timeCounter / timeForSelection;
     }
