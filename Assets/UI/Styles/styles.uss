@@ -87,12 +87,13 @@
 }
 
 #ErrorModal {
-    width: 70%;
     max-width: 400px;
     background-color: rgb(30, 30, 30);
     padding: 20px;
     border-radius: 10px;
     align-items: center;
+    width: 80%;
+    max-height: 80%;
 }
 
 #ErrorText {
@@ -119,4 +120,52 @@
 #BlackWorkToggle:focus,
 #BasicDeliveryToggle:focus {
     background-color: rgba(0, 0, 0, 0);
+}
+
+#HelpTitle {
+    unity-text-align: middle-center;
+    color: rgb(49, 248, 251);
+    margin-bottom: 10px;
+}
+
+#HelpDescription {
+    unity-text-align: middle-center;
+    margin-bottom: 10px;
+}
+
+#CreditsText {
+    unity-text-align: middle-center;
+    margin-top: 15px;
+    font-size: 9px;
+    color: rgb(157, 157, 246);
+}
+
+#HelpTitle,
+#HelpDescription,
+#CreditsText {
+    color: rgb(49, 248, 251);
+    -unity-font-definition: url("project://database/Assets/Fonts/Orbitron-VariableFont_wght.ttf?fileID=12800000&guid=0d149c3f2eedbc8438e035bf626aacfd&type=3#Orbitron-VariableFont_wght");
+    unity-text-align: middle-center;
+    white-space: normal;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.modal-button {
+    right: auto;
+    top: auto;
+    background-image: url("project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&amp;guid=ccc7c244fcf7a7944a1dcb662b24f7a8&amp;type=3#9sprite_8bit_circle_outline");
+    -unity-slice-scale: 0.05px;
+    -unity-slice-type: tiled;
+    background-color: rgba(157, 157, 246, 0);
+    -unity-background-image-tint-color: rgb(157, 157, 246);
+    color: rgb(49, 248, 251);
+    -unity-font-style: bold;
+    -unity-font-definition: url("project://database/Assets/Fonts/Orbitron-VariableFont_wght.ttf?fileID=12800000&amp;guid=0d149c3f2eedbc8438e035bf626aacfd&amp;type=3#Orbitron-VariableFont_wght");
+    -unity-text-generator: advanced;
+    -unity-text-auto-size: best-fit 10px 15px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
 }

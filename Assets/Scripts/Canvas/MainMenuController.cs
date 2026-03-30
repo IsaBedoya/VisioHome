@@ -27,6 +27,11 @@ public class MainMenuController : MonoBehaviour
 
     private bool isUpdatingToggles;
 
+    private Button helpVideoBtn;
+    private Label helpTitle;
+    private Label helpDescription;
+    private Label creditsText;
+
     private void Start()
     {
         var root = uiDocument.rootVisualElement;
@@ -49,6 +54,13 @@ public class MainMenuController : MonoBehaviour
         errorModal = root.Q<VisualElement>("ErrorModalOverlay");
         errorText = root.Q<Label>("ErrorText");
         errorCloseBtn = root.Q<Button>("ErrorCloseBtn");
+
+        helpVideoBtn = root.Q<Button>("HelpVideoBtn");
+        helpTitle = root.Q<Label>("HelpTitle");
+        helpDescription = root.Q<Label>("HelpDescription");
+        creditsText = root.Q<Label>("CreditsText");
+
+        helpVideoBtn.clicked += OpenTutorialVideo;
 
         if (codeInput == null ||
             blackWorkToggle == null ||
@@ -190,17 +202,33 @@ public class MainMenuController : MonoBehaviour
 
     private void OnHelpPressed()
     {
-        Debug.Log("Help modal is not implemented yet.");
+        errorModal.style.display = DisplayStyle.Flex;
+
+        errorText.text = "";
+
+        helpTitle.style.display = DisplayStyle.Flex;
+        helpDescription.style.display = DisplayStyle.Flex;
+        helpVideoBtn.style.display = DisplayStyle.Flex;
+        creditsText.style.display = DisplayStyle.Flex;
     }
 
     private void ShowError(string message)
     {
         errorText.text = message;
         errorModal.style.display = DisplayStyle.Flex;
+        helpTitle.style.display = DisplayStyle.None;
+        helpDescription.style.display = DisplayStyle.None;
+        helpVideoBtn.style.display = DisplayStyle.None;
+        creditsText.style.display = DisplayStyle.None;
     }
 
     private void HideError()
     {
         errorModal.style.display = DisplayStyle.None;
+    }
+
+    private void OpenTutorialVideo()
+    {
+        Application.OpenURL("https://youtu.be/B01e0sbF6Sk");
     }
 }

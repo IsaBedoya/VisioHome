@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class ApartmentInitializer : MonoBehaviour
 {
-    [SerializeField] private GameObject basicDeliveryObjects;
+    [Header("Basic Delivery Objects")]
+    [SerializeField] private GameObject[] basicObjects;
 
     private void Start()
     {
-        if (basicDeliveryObjects == null)
-        {
-            Debug.LogWarning("Basic delivery objects are not assigned.");
-            return;
-        }
+        bool isBasic = MainMenuController.isBasicDelivery;
 
-        basicDeliveryObjects.SetActive(MainMenuController.isBasicDelivery);
+        foreach (GameObject obj in basicObjects)
+        {
+            if (obj != null)
+                obj.SetActive(isBasic);
+        }
     }
 }

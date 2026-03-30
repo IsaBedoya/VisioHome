@@ -25,8 +25,16 @@
         </ui:GroupBox>
         <ui:GroupBox name="ErrorModalOverlay">
             <ui:GroupBox name="ErrorModal" style="background-image: url(&quot;project://database/Assets/UI/Sprites/9sprite_8bit_circle.png?fileID=21300000&amp;guid=82408051fab6c1a4d816112abf1ec900&amp;type=3#9sprite_8bit_circle&quot;); background-color: rgba(83, 49, 243, 0); -unity-slice-scale: 0.05px; -unity-slice-type: tiled; -unity-background-image-tint-color: rgb(83, 49, 243); border-left-color: rgb(157, 157, 246); border-right-color: rgb(157, 157, 246); border-top-color: rgb(157, 157, 246); border-bottom-color: rgb(157, 157, 246); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px;">
-                <ui:Label text="" name="ErrorText" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Orbitron-VariableFont_wght.ttf?fileID=12800000&amp;guid=0d149c3f2eedbc8438e035bf626aacfd&amp;type=3#Orbitron-VariableFont_wght&quot;); color: rgb(49, 248, 251);"/>
-                <ui:Button text="Ok" name="ErrorCloseBtn" binding-path="" style="right: auto; top: auto; background-image: url(&quot;project://database/Assets/UI/Sprites/9sprite_8bit_circle_outline.png?fileID=21300000&amp;guid=ccc7c244fcf7a7944a1dcb662b24f7a8&amp;type=3#9sprite_8bit_circle_outline&quot;); -unity-slice-scale: 0.05px; -unity-slice-type: tiled; background-color: rgba(157, 157, 246, 0); -unity-background-image-tint-color: rgb(157, 157, 246); color: rgb(49, 248, 251); -unity-font-style: bold; -unity-font-definition: url(&quot;project://database/Assets/Fonts/Orbitron-VariableFont_wght.ttf?fileID=12800000&amp;guid=0d149c3f2eedbc8438e035bf626aacfd&amp;type=3#Orbitron-VariableFont_wght&quot;); -unity-text-generator: advanced; -unity-text-auto-size: best-fit 10px 15px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;"/>
+                <ui:ScrollView name="HelpScrollView">
+                    <ui:Label text="" name="ErrorText" style="-unity-font-definition: url(&quot;project://database/Assets/Fonts/Orbitron-VariableFont_wght.ttf?fileID=12800000&amp;guid=0d149c3f2eedbc8438e035bf626aacfd&amp;type=3#Orbitron-VariableFont_wght&quot;); color: rgb(49, 248, 251);"/>
+                    <ui:Label text="¿Cómo usar la aplicación?" name="HelpTitle"/>
+                    <ui:Label text="Puedes ver un tutorial completo en el siguiente enlace:" name="HelpDescription"/>
+                    <ui:Button text="Ver tutorial" name="HelpVideoBtn" class="modal-button"/>
+                    <ui:Label text="Creado por Isabela Bedoya Gaviria" name="CreditsText"/>
+                    <ui:Label text="Curso de Realidad Virtual y Aumentada II" name="CreditsText"/>
+                </ui:ScrollView>
+                
+                <ui:Button text="Ok" name="ErrorCloseBtn" binding-path="" class="modal-button"/>
             </ui:GroupBox>
         </ui:GroupBox>
     </ui:VisualElement>
